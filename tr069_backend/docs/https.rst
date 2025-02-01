@@ -1,6 +1,0 @@
-.. _https:
-
-HTTPS
-=====
-
-TODO
