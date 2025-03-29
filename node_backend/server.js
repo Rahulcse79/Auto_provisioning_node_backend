@@ -312,7 +312,7 @@ async function fetchDeviceData2(token, deviceId) {
   console.log(deviceId);
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const url = `http://${IpAddressOfACS}/device-manager/#!/devices/${deviceId}`;
+  const url = `https://auto-provisioning-tr069.onrender.com/device-manager/#!/devices/${deviceId}`;
   const cookie = {
     name: 'session',
     value: `{"AuthToken":"${token}"}`,
@@ -347,7 +347,7 @@ async function fetchDeviceData(token, deviceId) {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  const url = `http://${IpAddressOfACS}/device-manager/#!/devices/${deviceId}`;
+  const url = `https://auto-provisioning-tr069.onrender.com/device-manager/#!/devices/${deviceId}`;
   const cookie = {
     name: 'session',
     value: `{"AuthToken":"${token}"}`,
