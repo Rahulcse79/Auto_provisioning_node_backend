@@ -15,7 +15,8 @@ const util = require("util");
 require("dotenv").config();
 const exec1 = util.promisify(require("child_process").exec);
 const nets = networkInterfaces();
-let IpAddress = process.env.IpAddress || "localhost";
+// let IpAddress = process.env.IpAddress || "localhost";
+let IpAddress = "https://auto-provisioning-node-backend.onrender.com"
 const server = new JSONRPCServer();
 
 const app = express();
