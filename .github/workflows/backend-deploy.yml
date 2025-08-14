@@ -33,4 +33,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "node_backend/dist/*"  
-          target: ${{ secrets.SERVER_PATH }} 
+          target: ${{ secrets.SERVER_PATH }}  
