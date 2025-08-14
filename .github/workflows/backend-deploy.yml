@@ -34,4 +34,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "node_backend/dist/*"
           target: ${{ secrets.SERVER_DEPLOY_PATH }}/
+          strip_components: 2
+          overwrite: true
           debug: true
