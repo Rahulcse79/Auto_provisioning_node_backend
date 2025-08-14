@@ -1,4 +1,4 @@
-name: Deploy Node Backend
+name: Backend Build & Deploy
 
 on:
   push:
@@ -6,25 +6,31 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install & Build
-        run: |
-          npm ci
-          npm run build
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Deploy to Server
+      - name: Install dependencies
+        run: npm install 
+        working-directory: node_backend
+
+      - name: Build backend
+        run: npm run build
+        working-directory: node_backend
+
+      - name: Deploy to server
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.SERVER_HOST }}
+          host: ${{ secrets.SERVER_HOST }} 
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "dist/*"
-          target: "${{ secrets.SERVER_PATH }}"
-          overwrite: true
-          rm: true 
+          source: "node_backend/dist/*" 
+          target: ${{ secrets.SERVER_PATH }} 
